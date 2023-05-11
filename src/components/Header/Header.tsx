@@ -1,11 +1,11 @@
 import "./Header.style.css";
 const Header = () => {
   return (
-    <div>
-      <header>
+    <>
+      <header className="header">
         <h2>React : Simple CRUD Application</h2>
       </header>
-    </div>
+    </>
   );
 };
 

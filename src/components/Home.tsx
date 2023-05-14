@@ -1,4 +1,5 @@
 import { IEmployee, dummyEmployeeList } from "./Employee.type";
+import EmployeeList from "./EmployeeList";
 import Header from "./Header/Header";
 import { useState } from "react";
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
   return (
     <div>
       <Header />
+      <EmployeeList />
     </div>
   );
 };

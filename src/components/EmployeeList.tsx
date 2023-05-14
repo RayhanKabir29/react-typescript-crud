@@ -2,9 +2,10 @@ import { IEmployee } from "./Employee.type";
 import "./EmployeeList.style.css";
 type EmployeeProps = {
   list: IEmployee[];
+  onClickDeleteHandler: (data: IEmployee) => void;
 };
 const EmployeeList = (props: EmployeeProps) => {
-  const { list } = props;
+  const { list, onClickDeleteHandler } = props;
   return (
     <div>
       <h2>Employee List</h2>
@@ -24,7 +25,11 @@ const EmployeeList = (props: EmployeeProps) => {
                 <div>
                   <input type="button" value="View" />
                   <input type="button" value="Edit" />
-                  <input type="button" value="Delete" />
+                  <input
+                    type="button"
+                    value="Delete"
+                    onClick={() => onClickDeleteHandler(employee)}
+                  />
                 </div>
               </td>
             </tr>

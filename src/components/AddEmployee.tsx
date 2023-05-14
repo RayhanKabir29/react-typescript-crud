@@ -31,6 +31,7 @@ const AddEmployee = (props: ButtonProps) => {
       email: email,
     };
     onSubMitClickHnd(data);
+    onClickBackBtn();
   };
   return (
     <>

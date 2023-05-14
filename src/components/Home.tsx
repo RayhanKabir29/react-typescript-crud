@@ -1,7 +1,7 @@
 import { EmployeePageEnum, IEmployee } from "./Employee.type";
 import EmployeeList from "./EmployeeList";
 import Header from "./Header/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Home.style.css";
 import AddEmployee from "./AddEmployee";
 import EditEmployee from "./EditEmployee";
@@ -9,6 +9,14 @@ const Home = () => {
   const [employeeList, setEmployeeList] = useState([] as IEmployee[]);
   const [shownPage, setShownPage] = useState(EmployeePageEnum.list);
   const [dataToEdit, setDataToEdit] = useState({} as IEmployee);
+
+  useEffect(() => {
+    const listInString = window.localStorage.getItem("EmployeeList");
+    if (listInString) {
+      _setEmployeeList(JSON.parse(listInString));
+    }
+  }, []);
+
   const onAddEmployeeHandler = () => {
     setShownPage(EmployeePageEnum.add);
   };
@@ -16,14 +24,14 @@ const Home = () => {
     setShownPage(EmployeePageEnum.list);
   };
   const addEmployee = (data: IEmployee) => {
-    setEmployeeList([...employeeList, data]);
+    _setEmployeeList([...employeeList, data]);
   };
   const handleDelete = (data: IEmployee) => {
     const indexOfData = employeeList.indexOf(data);
     const temp = [...employeeList];
 
     temp.splice(indexOfData, 1);
-    setEmployeeList(temp);
+    _setEmployeeList(temp);
   };
   const editEmployeeData = (data: IEmployee) => {
     setShownPage(EmployeePageEnum.edit);
@@ -36,7 +44,12 @@ const Home = () => {
     const indexRecord = employeeList.indexOf(filterData);
     const tempData = [...employeeList];
     tempData[indexRecord] = data;
-    setEmployeeList(tempData);
+    _setEmployeeList(tempData);
+  };
+
+  const _setEmployeeList = (list: IEmployee[]) => {
+    setEmployeeList(list);
+    window.localStorage.setItem("EmployeeList", JSON.stringify(list));
   };
   return (
     <div>

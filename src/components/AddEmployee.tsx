@@ -3,10 +3,10 @@ import { IEmployee } from "./Employee.type";
 
 type BackButtonProps = {
   onClickBackBtn: () => void;
-  handleSubmit: (data: IEmployee) => void;
+  onSubMitClickHnd: (data: IEmployee) => void;
 };
 const AddEmployee = (props: BackButtonProps) => {
-  const { onClickBackBtn, handleSubmit } = props;
+  const { onClickBackBtn, onSubMitClickHnd } = props;
 
   const [firstName, setFirstName] = useState("");
   const [lasttName, setLastName] = useState("");
@@ -22,7 +22,7 @@ const AddEmployee = (props: BackButtonProps) => {
     setEmail(e.target.value);
   };
 
-  const handleBtnSubmit = (e: any) => {
+  const onSubmitBtnClickHnd = (e: any) => {
     e.preventDefault();
     const data: IEmployee = {
       id: new Date().toJSON.toString(),
@@ -30,11 +30,11 @@ const AddEmployee = (props: BackButtonProps) => {
       lastName: lasttName,
       email: email,
     };
-    handleSubmit(data);
+    onSubMitClickHnd(data);
   };
   return (
     <>
-      <form onSubmit={handleBtnSubmit}>
+      <form onSubmit={onSubmitBtnClickHnd}>
         <div>
           <label> First Name : </label>
           <input

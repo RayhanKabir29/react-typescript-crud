@@ -40,7 +40,7 @@ const Home = () => {
         {shownPage === EmployeePageEnum.add && (
           <AddEmployee
             onClickBackBtn={showEmployeeList}
-            handleSubmit={addEmployee}
+            onSubMitClickHnd={addEmployee}
           />
         )}
       </div>

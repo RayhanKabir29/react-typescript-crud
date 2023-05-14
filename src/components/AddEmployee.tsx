@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { IEmployee } from "./Employee.type";
 
-type BackButtonProps = {
+type ButtonProps = {
   onClickBackBtn: () => void;
   onSubMitClickHnd: (data: IEmployee) => void;
 };
-const AddEmployee = (props: BackButtonProps) => {
+const AddEmployee = (props: ButtonProps) => {
   const { onClickBackBtn, onSubMitClickHnd } = props;
 
   const [firstName, setFirstName] = useState("");
@@ -57,7 +57,7 @@ const AddEmployee = (props: BackButtonProps) => {
         </div>
         <div>
           <input type="button" value="Back" onClick={onClickBackBtn} />
-          <input type="button" value="Add Employee" />
+          <input type="submit" value="Add Employee" />
         </div>
       </form>
     </>

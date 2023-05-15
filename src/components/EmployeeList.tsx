@@ -10,10 +10,10 @@ type EmployeeProps = {
 const EmployeeList = (props: EmployeeProps) => {
   const { list, onClickDeleteHandler, editHandler } = props;
   const [showModal, setShowModal] = useState(false);
-  const [dataToShow, setDataTOShow] = useState(null as IEmployee | null);
+  const [dataToShow, setDataToShow] = useState(null as IEmployee | null);
 
   const viewEmployeeInfo = (data: IEmployee) => {
-    setDataTOShow(data);
+    setDataToShow(data);
     setShowModal(true);
   };
   const closeModal = () => {
